@@ -67,6 +67,7 @@ class StorageTest {
 		int expected = 0;
 		int actual = a.AccountList.size();
 		assertEquals(expected,actual);
+		a.resetSystem();
 	}
 
 	@Test
@@ -75,22 +76,29 @@ class StorageTest {
 		Patient b = new Patient("Heather",LocalDate.now(),"1500 N Patterson St");
 		a.addPatient(b);
 		String actual = a.checkPatientStatus(b.getPatientID());
-		System.out.println(actual);
+		String expected = "Patient " + b.getPatientID() + " Status: Not Active";
+		assertEquals(expected,actual);
+		a.resetSystem();
 	}
 
 	@Test
 	final void testGetPatient() {
-		fail("Not yet implemented"); // TODO
+		Storage a = new Storage();
+		Patient z = new Patient("Huey",LocalDate.now(),"1200 N Patterson St");
+		a.addPatient(z);
+		Patient actual = Storage.getPatient2(z.name);
+		assertEquals(z,actual);
+		a.resetSystem();
 	}
 
 	@Test
 	final void testDoesPatientExist() {
-		fail("Not yet implemented"); // TODO
+		Storage a = new Storage();
+		Patient f = new Patient("Ian",LocalDate.now(),"1100 N Patterson St");
+		a.addPatient(f);
+		boolean expected = true;
+		boolean actual = a.doesPatientExist(f.getPatientID());
+		assertEquals(expected,actual);
+		a.resetSystem();
 	}
-
-	@Test
-	final void testReturnPatientStatuses() {
-		fail("Not yet implemented"); // TODO
-	}
-
 }

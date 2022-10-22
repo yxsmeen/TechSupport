@@ -26,8 +26,6 @@ protected static ArrayList<Patient>AccountList = new ArrayList<Patient>();
 		String s = "";
 		for(int i =0;i<AccountList.size();i++) {
 			s += AccountList.get(i).toString() + "\n";
-//			s+= "Patient name: " + AccountList.get(i).getName() + ", Age: " + AccountList.get(i).getAge() + 
-//					", DOB: " + AccountList.get(i).getBday() + "\n";
 		}
 		return s;
 	}
@@ -40,11 +38,8 @@ protected static ArrayList<Patient>AccountList = new ArrayList<Patient>();
 		String s = "";
 		for(int i =0;i<AccountList.size();i++) {
 			if (patientId == AccountList.get(i).getPatientID()) {
-				s += "Patient status is " + AccountList.get(i).currentStatus;
+				s +="Patient " + AccountList.get(i).getPatientID() + " " + AccountList.get(i).getStatus();
 			}
-		}
-		if(s.substring(s.length())=="5") {
-			s.replace("5", "Not Active");
 		}
 		return s;
 	}

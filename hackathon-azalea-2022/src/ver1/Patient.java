@@ -96,7 +96,9 @@ public class Patient {
 	public void makeHistory() {
 		addMedicalHistory(getVisitReason());
 	}
-	
+	public String returnActualStatus(int i) {
+		return status[i];
+	}
 	public String toString() {
 		String str = "";
 		str += String.format("Patient ID: #" + getPatientID() + " Name: " + getName() + ", DOB: " + getBday() +
