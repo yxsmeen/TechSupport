@@ -100,9 +100,9 @@ public class Patient {
 		String str = "";
 		Appointment a = new Appointment(date, time);
 		if(addAppointment(a) == true) {
-			str += "Success!";
+			str += "Success! Appointment scheduled for: " + a.toString();
 		}else {
-			str += "Please enter a new Date, this one is taken";
+			str += "Please enter a new date, this one is taken";
 		}
 		return str;
 	}

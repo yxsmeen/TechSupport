@@ -1,6 +1,7 @@
 package ver1;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class PatientTest {
 
@@ -11,6 +12,7 @@ public class PatientTest {
 		testMakeHistory();
 		testStatus();
 		testStatusWithString();
+		testAppointment();
 	}
 	
 	public static void testToString() {
@@ -64,7 +66,6 @@ public class PatientTest {
 		Patient p = new Patient("Deborah Simms", LocalDate.of(2001, 7, 27), "123 Main St.");
 		p.addMedicalHistory("Aching back");
 		System.out.println(p.toString());
-		System.out.println(p.getMedicalHistory());
 		p.setStatus(0);
 		System.out.println(p.getStatus());
 	}
@@ -74,8 +75,13 @@ public class PatientTest {
 		Patient p = new Patient("Deborah Simms", LocalDate.of(2001, 7, 27), "123 Main St.");
 		p.addMedicalHistory("Aching back");
 		System.out.println(p.toString());
-		System.out.println(p.getMedicalHistory());
 		p.setStatus("On Hold");
 		System.out.println(p.getStatus());
+	}
+	
+	public static void testAppointment() {
+		System.out.println("\n---testAppointment()---");
+		Patient p = new Patient("Deborah Simms", LocalDate.of(2001, 7, 27), "123 Main St.");
+		System.out.println(p.makeAppointment(LocalDate.of(2022, 10, 15), LocalTime.of(10, 0)));
 	}
 }

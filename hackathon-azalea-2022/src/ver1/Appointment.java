@@ -14,4 +14,7 @@ public class Appointment {
 		this.time = time;
 	}
 	
+	public String toString() {
+		return String.format("Date: " + date + ", Time: " + time);
+	}
 }
