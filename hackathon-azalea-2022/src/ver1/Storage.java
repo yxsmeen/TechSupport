@@ -1,10 +1,11 @@
 package ver1;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Storage {
-	ArrayList<Patient>AccountList = new ArrayList<Patient>();
-	public Storage(Patient p){
+protected	ArrayList<Patient>AccountList = new ArrayList<Patient>();
+	public Storage(){
 		
 	}
 	public void addPatient(Patient p) {
@@ -32,11 +33,26 @@ public class Storage {
 		String s = "";
 		for(int i =0;i<AccountList.size();i++) {
 			if (p.equals(AccountList.get(i))) {
-				s += "Patient status is " + p;
-				// insert their status here once method exists 
+				s += "Patient status is " + AccountList.get(i).currentStatus;
 			}
+		
 		}
 		return s;
 	
+	}
+	public Patient getPatient(int patientId) {
+		int j = 0;
+		for (int i=0;i<AccountList.size();i++) {
+			if(AccountList.get(i).getPatientID()==patientId) {
+				j+= i;
+			}
+		}
+		return AccountList.get(j);
+	}
+	public static void main(String[] args) {
+		Storage s = new Storage();
+		Patient p = new Patient("Mark",LocalDate.now(),"1500 N Patterson St");
+		s.addPatient(p);
+		String y = s.printList();
 	}
 }
