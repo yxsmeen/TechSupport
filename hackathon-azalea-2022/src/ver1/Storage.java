@@ -19,7 +19,7 @@ protected static ArrayList<Patient>AccountList = new ArrayList<Patient>();
 		AccountList.remove(p);
 	}
 	public String returnNumList() {
-		String s  ="There are " + AccountList.size() + " many patients in our system";
+		String s  ="There are " + AccountList.size() + " patients in our system";
 		return s;
 	}
 	public String printList() {
@@ -43,6 +43,9 @@ protected static ArrayList<Patient>AccountList = new ArrayList<Patient>();
 				s += "Patient status is " + AccountList.get(i).currentStatus;
 			}
 		}
+		if(s.substring(s.length())=="5") {
+			s.replace("5", "Not Active");
+		}
 		return s;
 	}
 	
@@ -55,6 +58,15 @@ protected static ArrayList<Patient>AccountList = new ArrayList<Patient>();
 		}
 		return AccountList.get(j);
 	}
+	public static Patient getPatient2(String name) {
+		int j = 0;
+		for(int i =0;i<AccountList.size();i++) {
+			if(AccountList.get(i).getName() == name) {
+				j = i; 
+			}
+		}
+		return AccountList.get(j);
+		}
 	
 	public String nameSortPatientList(){
 		Collections.sort(AccountList, new PatientNameComparator());
