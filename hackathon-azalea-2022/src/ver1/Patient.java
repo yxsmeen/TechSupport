@@ -28,7 +28,7 @@ public class Patient {
 	
 	public String toString() {
 		String str = "";
-		str += String.format("Patient: " + getName() + " DOB: " + getBday() +
+		str += String.format("Patient: " + getName() + ", DOB: " + getBday() +
 				", age: " + getAge());
 		return str;
 	}
