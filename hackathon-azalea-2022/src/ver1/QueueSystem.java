@@ -13,7 +13,6 @@ public class QueueSystem {
 		patientsQueue.add(t);
 	}
 	
-	
 	public void removeFromQueue(Patient t) {
 		patientsQueue.remove(t);
 	}
@@ -32,6 +31,7 @@ public class QueueSystem {
 	
 	public void removeInProgress(Patient p) {
 		inProgress.remove(p);
+		p.makeHistory();
 	}
 }
 	
