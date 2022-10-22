@@ -63,7 +63,6 @@ public class Patient {
 		String str = "";
 		return str = String.format(visitReasonHeader + visitReason);
 	}
-
 	
 	public String getVisitReason() {
 		return visitReason;
