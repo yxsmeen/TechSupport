@@ -5,20 +5,31 @@ import java.time.LocalDate;
 public class PatientTest {
 
 	public static void main(String[] args) {
-		testAge();
+		testToString();
+		testMultPatients();
 		testMedicalHistory();
 		testMakeHistory();
 		testStatus();
 		testStatusWithString();
 	}
 	
-	public static void testAge() {
-		System.out.println("---toString()---");
+	public static void testToString() {
+		System.out.println("---testToString()---");
 		Patient p = new Patient("Deborah Simms", LocalDate.of(2001, 7, 27), "123 Main St.");
 		System.out.println(p.toString());
 		System.out.println(p.getStatus());
 	}
 
+	public static void testMultPatients() {
+		System.out.println("\n---toString()---");
+		Patient p = new Patient("Deborah Simms", LocalDate.of(2001, 7, 27), "123 Main St.");
+		Patient p1 = new Patient("Sandra Dee", LocalDate.of(2010, 5, 22), "123 Main St.");
+		System.out.println(p.toString());
+		System.out.println(p.getStatus());
+		System.out.println(p1.toString());
+		System.out.println(p1.getStatus());
+	}
+	
 	public static void testMedicalHistory() {
 		System.out.println("\n---testMedicalHistory()---");
 		Patient p = new Patient("Deborah Simms", LocalDate.of(2001, 7, 27), "123 Main St.");
@@ -66,6 +77,5 @@ public class PatientTest {
 		System.out.println(p.getMedicalHistory());
 		p.setStatus("On Hold");
 		System.out.println(p.getStatus());
-		
 	}
 }

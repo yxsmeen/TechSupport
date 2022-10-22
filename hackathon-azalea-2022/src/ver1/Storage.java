@@ -2,6 +2,7 @@ package ver1;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Storage {
 protected	ArrayList<Patient>AccountList = new ArrayList<Patient>();
@@ -21,25 +22,27 @@ protected	ArrayList<Patient>AccountList = new ArrayList<Patient>();
 	public String printList() {
 		String s = "";
 		for(int i =0;i<AccountList.size();i++) {
-			s+= "Patient name is " + AccountList.get(i).name + ", age is " + AccountList.get(i).age + 
-					" finally their birthdate is " + AccountList.get(i).dob + "\n";
+			s += AccountList.get(i).toString() + "\n";
+//			s+= "Patient name: " + AccountList.get(i).getName() + ", Age: " + AccountList.get(i).getAge() + 
+//					", DOB: " + AccountList.get(i).getBday() + "\n";
 		}
 		return s;
 	}
+	
 	public void resetSystem() {
 		AccountList.clear();
 	}
+	
 	public String checkPatientStatus(Patient p) {
 		String s = "";
 		for(int i =0;i<AccountList.size();i++) {
 			if (p.equals(AccountList.get(i))) {
 				s += "Patient status is " + AccountList.get(i).currentStatus;
 			}
-		
 		}
 		return s;
-	
 	}
+	
 	public Patient getPatient(int patientId) {
 		int j = 0;
 		for (int i=0;i<AccountList.size();i++) {
@@ -49,10 +52,28 @@ protected	ArrayList<Patient>AccountList = new ArrayList<Patient>();
 		}
 		return AccountList.get(j);
 	}
+	
+	public String nameSortPatientList(){
+		Collections.sort(AccountList, new PatientNameComparator());
+		return printList();
+	}
+	
+	public String IDSortPatientList(){
+		Collections.sort(AccountList, new PatientIDComparator());
+		return printList();
+	}
+	
 	public static void main(String[] args) {
 		Storage s = new Storage();
-		Patient p = new Patient("Mark",LocalDate.now(),"1500 N Patterson St");
+		Patient p = new Patient("Mark",LocalDate.of(2000, 3, 6),"1500 N Patterson St");
+		Patient p1 = new Patient("Ann", LocalDate.of(2001, 4, 19), "333 Bloom Ave.");
 		s.addPatient(p);
+		s.addPatient(p1);
 		String y = s.printList();
+		
+		System.out.println(p.getPatientID());
+		System.out.println(p1.getPatientID());
+		System.out.println(s.printList());
+		System.out.println(s.IDSortPatientList());
 	}
 }
