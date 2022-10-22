@@ -9,6 +9,7 @@ public class QueueSystemTest {
 	public static void main(String[] args) {
 		testCreation();
 		testRemoved();
+		testHistoryChanged();
 	}
 	
 	private static void updateStatus(int id, int status) {
@@ -22,9 +23,13 @@ public class QueueSystemTest {
 		}
 		else {
 			if (queued.getInProgress().contains(p)) {
+				p.makeHistory();
+				p.emptyReason();
 				queued.removeInProgress(p);
 			}
 			else{
+				p.makeHistory();
+				p.emptyReason();
 				queued.removeFromQueue(p);
 			}
 		}
@@ -41,24 +46,21 @@ public class QueueSystemTest {
 		s.addPatient(p2);
 		s.addPatient(p3);
 		
-		System.out.println("p1 status: " + p1.getStatus());
-		System.out.println("p2 status: " + p2.getStatus());
-		System.out.println("p3 status: " + p3.getStatus());
+		System.out.println("p1 " + p1.getStatus());
+		System.out.println("p2 " + p2.getStatus());
+		System.out.println("p3 " + p3.getStatus());
 		
 		updateStatus(p1.getPatientID(), 0);
 		updateStatus(p2.getPatientID(), 2);
 		updateStatus(p3.getPatientID(), 0);
 		
 		System.out.println("\n->Updated Status:");
-		System.out.println("p1 status: " + p1.getStatus());
-		System.out.println("p2 status: " + p2.getStatus());
-		System.out.println("p3 status: " + p3.getStatus());
+		System.out.println("p1 " + p1.getStatus());
+		System.out.println("p2 " + p2.getStatus());
+		System.out.println("p3 " + p3.getStatus());
 		
 		System.out.println("\nPatient Queue: \n" + q.getQueue());
 		System.out.println("In progress: \n" + q.getProgress());
-//		s.resetSystem();
-//		q.resetInProgress();
-//		q.resetQueue();
 	}
 	
 	public static void testRemoved() {
@@ -72,9 +74,9 @@ public class QueueSystemTest {
 		s.addPatient(p2);
 		s.addPatient(p3);
 		
-		System.out.println("p1 status: " + p1.getStatus());
-		System.out.println("p2 status: " + p2.getStatus());
-		System.out.println("p3 status: " + p3.getStatus());
+		System.out.println("p1 " + p1.getStatus());
+		System.out.println("p2 " + p2.getStatus());
+		System.out.println("p3 " + p3.getStatus());
 		
 		System.out.println("\nPatient Queue: \n" + q.getQueue());
 		System.out.println("In progress: \n" + q.getProgress());
@@ -83,10 +85,10 @@ public class QueueSystemTest {
 		updateStatus(p2.getPatientID(), 2);
 		updateStatus(p3.getPatientID(), 0);
 		
-		System.out.println("\n->Updated Status:");
-		System.out.println("p1 status: " + p1.getStatus());
-		System.out.println("p2 status: " + p2.getStatus());
-		System.out.println("p3 status: " + p3.getStatus());
+		System.out.println("->Updated Status:");
+		System.out.println("p1 " + p1.getStatus());
+		System.out.println("p2 " + p2.getStatus());
+		System.out.println("p3 " + p3.getStatus());
 		
 		System.out.println("\nPatient Queue: \n" + q.getQueue());
 		System.out.println("In progress: \n" + q.getProgress());
@@ -96,21 +98,9 @@ public class QueueSystemTest {
 		updateStatus(p3.getPatientID(), 3);
 		
 		System.out.println("->Updated Status:");
-		System.out.println("p1 status: " + p1.getStatus());
-		System.out.println("p2 status: " + p2.getStatus());
-		System.out.println("p3 status: " + p3.getStatus());
-		
-		System.out.println("\nPatient Queue: \n" + q.getQueue());
-		System.out.println("In progress: \n" + q.getProgress());
-		
-		updateStatus(p1.getPatientID(), 3);
-		updateStatus(p2.getPatientID(), 4);
-		updateStatus(p3.getPatientID(), 5);
-		
-		System.out.println("->Updated Status:");
-		System.out.println("p1 status: " + p1.getStatus());
-		System.out.println("p2 status: " + p2.getStatus());
-		System.out.println("p3 status: " + p3.getStatus());
+		System.out.println("p1 " + p1.getStatus());
+		System.out.println("p2 " + p2.getStatus());
+		System.out.println("p3 " + p3.getStatus());
 		
 		System.out.println("\nPatient Queue: \n" + q.getQueue());
 		System.out.println("In progress: \n" + q.getProgress());
@@ -120,16 +110,33 @@ public class QueueSystemTest {
 		updateStatus(p3.getPatientID(), 5);
 		
 		System.out.println("->Updated Status:");
-		System.out.println("p1 status: " + p1.getStatus());
-		System.out.println("p2 status: " + p2.getStatus());
-		System.out.println("p3 status: " + p3.getStatus());
+		System.out.println("p1 " + p1.getStatus());
+		System.out.println("p2 " + p2.getStatus());
+		System.out.println("p3 " + p3.getStatus());
 		
 		System.out.println("\nPatient Queue: \n" + q.getQueue());
 		System.out.println("In progress: \n" + q.getProgress());
+	}
+	
+	public static void testHistoryChanged() {
+		System.out.println("---testHistoryChanged()---");
+		Storage s = new Storage();
+		QueueSystem q = new QueueSystem();
+		Patient p1 = new Patient("Jason Dean", LocalDate.of(1972, 3, 18), "37 911 St.");
+		p1.addMedicalHistory("Achey back");
+		p1.addVisitReason("Sweating & fever");
+		s.addPatient(p1);
+
+		updateStatus(p1.getPatientID(), 0);
+		System.out.println("->While Patient is waiting:");
+		System.out.println("p1 " + p1.getStatus() + "\n");
+		System.out.println(p1.getMedicalHistory());
+		System.out.println(p1.getFullReason());
 		
-//		s.resetSystem();
-//		q.resetInProgress();
-//		q.resetQueue();
+		updateStatus(p1.getPatientID(), 4);
+		System.out.println("\n->When Patient checks out:");
+		System.out.println("p1 " + p1.getStatus() + "\n");
+		System.out.println(p1.getMedicalHistory());
 	}
 
 }
