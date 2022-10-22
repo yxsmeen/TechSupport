@@ -1,6 +1,7 @@
 package ver1;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.Period;
 
 public class Patient {
@@ -93,12 +94,17 @@ public class Patient {
 		visitReason = "";
 	}
 	
+	public void makeAppointment(LocalDate date, LocalTime time) {
+		
+	}
+	
 	public void makeHistory() {
 		addMedicalHistory(getVisitReason());
 	}
 	public String returnActualStatus(int i) {
 		return status[i];
 	}
+	
 	public String toString() {
 		String str = "";
 		str += String.format("Patient ID: #" + getPatientID() + " Name: " + getName() + ", DOB: " + getBday() +
