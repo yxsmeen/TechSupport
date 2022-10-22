@@ -6,6 +6,7 @@ import java.util.Collections;
 
 public class Storage {
 protected static ArrayList<Patient>AccountList = new ArrayList<Patient>();
+protected static ArrayList<String>AppointmentDates = new ArrayList<String>();
 	public Storage(){
 		
 	}
@@ -103,5 +104,16 @@ protected static ArrayList<Patient>AccountList = new ArrayList<Patient>();
 			}
 		}
 		return Patients;
+	}
+	public String getAppointmentDates() {
+		String g = AppointmentDates.toString();
+		return g;
+	}
+	public void removeAppointmentDates(String date) {
+		for(int i =0;i<AppointmentDates.size();i++) {
+			if(AppointmentDates.get(i) == date) {
+				AppointmentDates.remove(i);
+			}
+		}
 	}
 }

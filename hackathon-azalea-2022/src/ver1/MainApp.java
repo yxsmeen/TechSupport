@@ -8,10 +8,12 @@ public class MainApp {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+//		Storage s = new Storage();
+//		Patient b = new Patient("Mitch",LocalDate.now(),"1500 N Patterson St");
+//		s.addPatient(b);
+//		System.out.println(Storage.getPatient(b.getPatientID()).getStatus());
 		Storage s = new Storage();
-		Patient b = new Patient("Mitch",LocalDate.now(),"1500 N Patterson St");
-		s.addPatient(b);
-		System.out.println(Storage.getPatient(b.getPatientID()).getStatus());
+		System.out.println(s.getAppointmentDates());
 	}
 	
 	private void newPatient(Patient p) {
