@@ -8,13 +8,19 @@ public class MainApp {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Patient p = new Patient("Mike",LocalDate.now(),"1500 N Patterson St");
-		Patient y = new Patient("donald",LocalDate.now(),"1500 N Patterson St");
-		Storage s = new Storage();
-		s.addPatient(p);
-		s.addPatient(y);
-		System.out.println(p.getPatientID());
-		System.out.println(y.getPatientID());
+//		Patient p = new Patient("Mike",LocalDate.now(),"1500 N Patterson St");
+//		Patient y = new Patient("donald",LocalDate.now(),"1500 N Patterson St");
+//		Storage s = new Storage();
+//		s.addPatient(p);
+//		s.addPatient(y);
+//		System.out.println(p.getPatientID());
+//		System.out.println(y.getPatientID());
+//		
+		Storage a = new Storage();
+		Patient b = new Patient("Heather",LocalDate.now(),"1500 N Patterson St");
+		a.addPatient(b);
+		String actual = a.checkPatientStatus(b.getPatientID());
+		System.out.println(actual);
 	}
 	
 	private void newPatient(Patient p) {
