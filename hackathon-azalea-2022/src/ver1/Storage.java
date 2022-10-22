@@ -135,6 +135,9 @@ protected static ArrayList<Appointment>AppointmentDates = new ArrayList<Appointm
 			if(AppointmentDates.get(i) == a) {
 				AppointmentDates.remove(i);	
 			}
+			if(AppointmentDates.get(i)==a) {
+				AppointmentDates.remove(i);
+			}
 		}
 	}
 }
