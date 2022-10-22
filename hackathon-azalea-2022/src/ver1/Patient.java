@@ -15,14 +15,14 @@ public class Patient {
 	String visitReason = "";
 	String[] status = {"Waiting", "Ready", "In-Progress", "On Hold", "Checked Out", "Not Active"};
 	int currentStatus = 0;
-	private static int patientId = 0;
+	private int patientId;
 	
 	public Patient(String name, LocalDate bday, String address) {
 		this.name = name;
 		this.bday = bday;
 		this.address = address;
 		setStatus(5); //not active
-		patientId++;
+		patientId = generatePatientID();
 	}
 	
 	public String getName() {
@@ -39,6 +39,11 @@ public class Patient {
 	
 	public int getPatientID() {
 		return patientId;
+	}
+	
+	public int generatePatientID() {
+		patientId = (int)Math.floor(Math.random()*(9999-0001+1)+0001);
+		return getPatientID();
 	}
 	
 	public void setAddress(String addy) {
