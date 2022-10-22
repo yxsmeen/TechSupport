@@ -6,7 +6,7 @@ import java.time.Period;
 public class Patient {
 
 	String name;
-	LocalDate bday;
+	LocalDate dob;
 	LocalDate currentDate = LocalDate.now();
 	int age;
 	String address;
@@ -17,9 +17,9 @@ public class Patient {
 	int currentStatus = 0;
 	private static int patientId = 0;
 	
-	public Patient(String name, LocalDate bday, String address) {
+	public Patient(String name, LocalDate dob, String address) {
 		this.name = name;
-		this.bday = bday;
+		this.dob = dob;
 		this.address = address;
 		setStatus(5); //not active
 		patientId++;
@@ -30,11 +30,11 @@ public class Patient {
 	}
 	
 	public LocalDate getBday() {
-		return bday;
+		return dob;
 	}	
 	
 	public int getAge() {
-		return Period.between(bday, currentDate).getYears();
+		return Period.between(dob, currentDate).getYears();
 	}
 	
 	public int getPatientID() {

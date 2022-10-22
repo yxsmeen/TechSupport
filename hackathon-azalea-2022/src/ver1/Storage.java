@@ -21,7 +21,7 @@ public class Storage {
 		String s = "";
 		for(int i =0;i<AccountList.size();i++) {
 			s+= "Patient name is " + AccountList.get(i).name + ", age is " + AccountList.get(i).age + 
-					" finally their birthdate is " + AccountList.get(i).bday + "\n";
+					" finally their birthdate is " + AccountList.get(i).dob + "\n";
 		}
 		return s;
 	}
