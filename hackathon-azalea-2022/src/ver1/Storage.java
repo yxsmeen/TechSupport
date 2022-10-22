@@ -10,6 +10,9 @@ protected static ArrayList<Patient>AccountList = new ArrayList<Patient>();
 		
 	}
 	public void addPatient(Patient p) {
+		while(doesPatientExist(p.getPatientID())==true) {
+			p.generatePatientID();
+		}
 		AccountList.add(p);
 	}
 	public void removePatient(Patient p) {
@@ -76,17 +79,13 @@ protected static ArrayList<Patient>AccountList = new ArrayList<Patient>();
 		System.out.println("Name Sort:\n" + s.nameSortPatientList());
 	}
 	
-	public String doesPatientExist(int patientId) {
-		String s = "";
+	public boolean doesPatientExist(int patientId) {
 		for(int i =0;i<AccountList.size();i++) {
 			if(AccountList.get(i).getPatientID()==patientId) {
-				s = "Patient exists in system don't create account";
-			}
-			else {
-				s = "Patient doesn't exist in system, add them";
+				return true;
 			}
 		}
-		return s;
+		return false;
 	}
 	
 	public ArrayList<Patient> returnPatientStatuses(int i){
