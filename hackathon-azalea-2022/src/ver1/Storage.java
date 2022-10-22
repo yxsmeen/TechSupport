@@ -10,7 +10,7 @@ protected static ArrayList<Patient>AccountList = new ArrayList<Patient>();
 		
 	}
 	public void addPatient(Patient p) {
-		while(doesPatientExist(p.getPatientID())==true) {
+		while(doesPatientExist(p.getPatientID()) == true) {
 			p.generatePatientID();
 		}
 		AccountList.add(p);

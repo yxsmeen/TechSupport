@@ -27,7 +27,7 @@ public class MainApp {
 		if (status == 0) {
 			queued.addToQueue(p);
 		}
-		else if (status >=1 || status <=3) {
+		else if (status >=1 && status <=3) {
 			queued.addToInProgress(p);
 		}
 		else {
