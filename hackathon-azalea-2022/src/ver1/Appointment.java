@@ -8,6 +8,7 @@ public class Appointment {
 	LocalDate date;
 	LocalTime time;
 	Patient p;
+	
 	public Appointment(LocalDate date, LocalTime time) {
 		this.date = date;
 		this.time = time;

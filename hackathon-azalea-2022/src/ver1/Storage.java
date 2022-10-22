@@ -1,21 +1,32 @@
 package ver1;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Storage {
 protected static ArrayList<Patient>AccountList = new ArrayList<Patient>();
-protected static ArrayList<String>AppointmentDates = new ArrayList<String>();
+protected static ArrayList<Appointment>AppointmentDates = new ArrayList<Appointment>();
 	public Storage(){
 		
 	}
+	
 	public void addPatient(Patient p) {
 		while(doesPatientExist(p.getPatientID()) == true) {
 			p.generatePatientID();
 		}
 		AccountList.add(p);
 	}
+	
+	public boolean addAppointment(Appointment a) {
+		if(doesAppointmentExist(a) == false) {
+			AppointmentDates.add(a);
+			return true;
+		}
+		return false;
+	}
+	
 	public void removePatient(Patient p) {
 		AccountList.remove(p);
 	}
@@ -96,6 +107,15 @@ protected static ArrayList<String>AppointmentDates = new ArrayList<String>();
 		return false;
 	}
 	
+	public boolean doesAppointmentExist(Appointment a) {
+		for(int i = 0; i < AppointmentDates.size(); i++) {
+			if(a.equals(AppointmentDates.get(i))){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public ArrayList<Patient> returnPatientStatuses(int i){
 		ArrayList<Patient> Patients = new ArrayList<Patient>();
 		for(int j=0;i<AccountList.size();j++) {
@@ -110,10 +130,10 @@ protected static ArrayList<String>AppointmentDates = new ArrayList<String>();
 		return g;
 	}
 	
-	public void removeAppointmentDates(String date) {
+	public void removeAppointmentDates(Appointment a) {
 		for(int i =0;i<AppointmentDates.size();i++) {
-			if(AppointmentDates.get(i) == date) {
-				AppointmentDates.remove(i);
+			if(AppointmentDates.get(i) == a) {
+				AppointmentDates.remove(i);	
 			}
 		}
 	}

@@ -3,6 +3,7 @@ package ver1;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Period;
+import java.util.ArrayList;
 
 public class Patient {
 
@@ -17,6 +18,7 @@ public class Patient {
 	String[] status = {"Waiting", "Ready", "In-Progress", "On Hold", "Checked Out", "Not Active"};
 	int currentStatus = 0;
 	private int patientId;
+	protected static ArrayList<Appointment>AppointmentDates = new ArrayList<Appointment>();
 	
 	public Patient(String name, LocalDate bday, String address) {
 		this.name = name;
@@ -94,8 +96,32 @@ public class Patient {
 		visitReason = "";
 	}
 	
-	public void makeAppointment(LocalDate date, LocalTime time) {
-		
+	public String makeAppointment(LocalDate date, LocalTime time) {
+		String str = "";
+		Appointment a = new Appointment(date, time);
+		if(addAppointment(a) == true) {
+			str += "Success!";
+		}else {
+			str += "Please enter a new Date, this one is taken";
+		}
+		return str;
+	}
+	
+	public boolean addAppointment(Appointment a) {
+		if(doesAppointmentExist(a) == false) {
+			AppointmentDates.add(a);
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean doesAppointmentExist(Appointment a) {
+		for(int i = 0; i < AppointmentDates.size(); i++) {
+			if(a.equals(AppointmentDates.get(i))){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public void makeHistory() {
