@@ -42,7 +42,7 @@ public class Patient {
 	}
 	
 	public int generatePatientID() {
-		patientId = (int)Math.floor(Math.random()*(9999-0001+1)+0001);
+		patientId = (int)Math.floor(Math.random()*(9999-1111+1)+1111);
 		return getPatientID();
 	}
 	
