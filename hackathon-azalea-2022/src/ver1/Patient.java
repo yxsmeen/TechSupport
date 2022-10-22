@@ -21,7 +21,7 @@ public class Patient {
 		this.name = name;
 		this.bday = bday;
 		this.address = address;
-		this.status = status;
+		setStatus(5); //not active
 		patientId++;
 	}
 	
