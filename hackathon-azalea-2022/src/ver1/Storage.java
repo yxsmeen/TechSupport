@@ -3,7 +3,7 @@ package ver1;
 import java.util.ArrayList;
 
 public class Storage {
-protected static	ArrayList<Patient>AccountList = new ArrayList<Patient>();
+protected static ArrayList<Patient>AccountList = new ArrayList<Patient>();
 	public Storage(){
 		
 	}
@@ -59,5 +59,14 @@ protected static	ArrayList<Patient>AccountList = new ArrayList<Patient>();
 			}
 		}
 		return s;
-	}	
+	}
+	public ArrayList<Patient> returnPatientStatuses(int i){
+		ArrayList<Patient> Patients = new ArrayList<Patient>();
+		for(int j=0;i<AccountList.size();j++) {
+			if(AccountList.get(i).currentStatus == i) {
+				Patients.add(AccountList.get(i));
+			}
+		}
+		return Patients;
+	}
 }
