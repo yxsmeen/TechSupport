@@ -1,6 +1,5 @@
 package ver1;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Storage {
@@ -29,10 +28,10 @@ protected	ArrayList<Patient>AccountList = new ArrayList<Patient>();
 	public void resetSystem() {
 		AccountList.clear();
 	}
-	public String checkPatientStatus(Patient p) {
+	public String checkPatientStatus(int patientId) {
 		String s = "";
 		for(int i =0;i<AccountList.size();i++) {
-			if (p.equals(AccountList.get(i))) {
+			if (patientId == AccountList.get(i).getPatientID()) {
 				s += "Patient status is " + AccountList.get(i).currentStatus;
 			}
 		
@@ -60,12 +59,5 @@ protected	ArrayList<Patient>AccountList = new ArrayList<Patient>();
 			}
 		}
 		return s;
-	}
-
-	public static void main(String[] args) {
-		Storage s = new Storage();
-		Patient p = new Patient("Mark",LocalDate.now(),"1500 N Patterson St");
-		s.addPatient(p);
-		String y = s.printList();
-	}
+	}	
 }
