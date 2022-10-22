@@ -49,6 +49,19 @@ protected	ArrayList<Patient>AccountList = new ArrayList<Patient>();
 		}
 		return AccountList.get(j);
 	}
+	public String doesPatientExist(int patientId) {
+		String s = "";
+		for(int i =0;i<AccountList.size();i++) {
+			if(AccountList.get(i).getPatientID()==patientId) {
+				s = "Patient exists in system don't create account";
+			}
+			else {
+				s = "Patient doesn't exist in system, add them";
+			}
+		}
+		return s;
+	}
+
 	public static void main(String[] args) {
 		Storage s = new Storage();
 		Patient p = new Patient("Mark",LocalDate.now(),"1500 N Patterson St");
