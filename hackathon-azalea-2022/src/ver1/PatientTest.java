@@ -8,6 +8,7 @@ public class PatientTest {
 		testAge();
 		testMedicalHistory();
 		testMakeHistory();
+		testStatus();
 	}
 	
 	public static void testAge() {
@@ -43,5 +44,15 @@ public class PatientTest {
 		System.out.println("\n->Made history");
 		p.makeHistory();
 		System.out.println(p.getMedicalHistory());
+	}
+	
+	public static void testStatus() {
+		System.out.println("\n---testStatus()---");
+		Patient p = new Patient("Deborah Simms", LocalDate.of(2001, 7, 27), "123 Main St.");
+		p.addMedicalHistory("Aching back");
+		System.out.println(p.toString());
+		System.out.println(p.getMedicalHistory());
+		p.setStatus(0);
+		System.out.println(p.getStatus());
 	}
 }

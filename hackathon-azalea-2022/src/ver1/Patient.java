@@ -13,10 +13,14 @@ public class Patient {
 	String medicalHistory = "MEDICAL HISTORY:\n";
 	String visitReasonHeader = "REASON FOR VISIT:\n-";
 	String visitReason = "";
+	String[] status = {"Waiting", "Ready", "In-Progress", "On Hold", "Checked Out", "Not Active"};
+	int currentStatus = 0;
+	
 	public Patient(String name, LocalDate bday, String address) {
 		this.name = name;
 		this.bday = bday;
 		this.address = address;
+		this.status = status;
 	}
 	
 	public String getName() {
@@ -34,7 +38,15 @@ public class Patient {
 	public void setAddress(String addy) {
 		address = addy;
 	}
+	
+	public void setStatus(int i) {
+		currentStatus = i;
+	}
 
+	public String getStatus() {
+		return String.format("Status: " + status[currentStatus]);
+	}
+	
 	public void addMedicalHistory(String more) {
 		medicalHistory += "-" + more + "\n";
 	}
@@ -49,13 +61,9 @@ public class Patient {
 	
 	public String getFullReason() {
 		String str = "";
-//		visitReason += reason;
 		return str = String.format(visitReasonHeader + visitReason);
 	}
-	
-//	public String getReason(String reason) {
-//		return reason;
-//	}
+
 	
 	public String getVisitReason() {
 		return visitReason;
