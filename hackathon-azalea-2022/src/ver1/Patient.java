@@ -15,12 +15,14 @@ public class Patient {
 	String visitReason = "";
 	String[] status = {"Waiting", "Ready", "In-Progress", "On Hold", "Checked Out", "Not Active"};
 	int currentStatus = 0;
+	private static int patientId = 0;
 	
 	public Patient(String name, LocalDate bday, String address) {
 		this.name = name;
 		this.bday = bday;
 		this.address = address;
 		this.status = status;
+		patientId++;
 	}
 	
 	public String getName() {
@@ -35,12 +37,26 @@ public class Patient {
 		return Period.between(bday, currentDate).getYears();
 	}
 	
+	public int getPatientID() {
+		return patientId;
+	}
+	
 	public void setAddress(String addy) {
 		address = addy;
 	}
 	
 	public void setStatus(int i) {
 		currentStatus = i;
+	}
+	
+	public void setStatus(String stat) {
+		int index = 5;
+		for(int i = 0; i < status.length; i++) {
+			if(status[i].equals(stat)) {
+				index = i;
+			}
+		}
+		currentStatus = index;
 	}
 
 	public String getStatus() {
@@ -78,7 +94,7 @@ public class Patient {
 	
 	public String toString() {
 		String str = "";
-		str += String.format("Patient: " + getName() + ", DOB: " + getBday() +
+		str += String.format("Patient ID: #" + getPatientID() + " Name: " + getName() + ", DOB: " + getBday() +
 				", Age: " + getAge() + " y/o");
 		return str;
 	}
