@@ -16,6 +16,7 @@ public class PatientTest {
 		System.out.println("---toString()---");
 		Patient p = new Patient("Deborah Simms", LocalDate.of(2001, 7, 27), "123 Main St.");
 		System.out.println(p.toString());
+		System.out.println(p.getStatus());
 	}
 
 	public static void testMedicalHistory() {
