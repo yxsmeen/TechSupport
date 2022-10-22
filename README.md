@@ -15,4 +15,4 @@ You will need to create an application which keeps track of currently visiting p
 
 While a doctor visits with a patient, their status is set to in-progress. Doctors can move the patient to a different room if necessary. While the doctor has stepped away for tests or any other reason, the patient’s status can be updated to on-hold. Patients on-hold stay on-hold until the doctor finishes the tests and returns when the status is moved back to in-progress. Once the patient checks out, their status is updated to checked out, and they are removed from the list of current patients at the hospital's walk-in clinic.
 
-Using good software design principles, create an admission/queueing system that lets patients be entered, stored, custom sorted, searched, tracked, dismissed, and should allow changing patient information..
+Using good software design principles, create an admission/queueing system that lets patients be entered, stored, custom sorted, searched, tracked, dismissed, and should allow changing patient information.
